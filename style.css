@@ -1,0 +1,309 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#312e81);
+    padding:10px;
+    overflow:hidden;
+}
+
+.container{
+
+width:95%;
+
+max-width:900px;
+
+padding:18px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:24px;
+
+box-shadow:0 10px 40px rgba(0,0,0,.35);
+
+}
+
+h1{
+
+font-size:3rem;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+color:white;
+
+margin-bottom:15px;
+
+text-shadow:0 4px 15px rgba(0,0,0,.35);
+
+}
+
+.scoreboard{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.player-card{
+    flex:1;
+    background:rgba(255,255,255,.08);
+    padding:10px;
+    border-radius:15px;
+}
+
+.player-card h2{
+    color:white;
+    margin-bottom:10px;
+}
+
+.player-card span{
+    color:#FFD700;
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.turn{
+    color:white;
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.board{
+    width:fit-content;
+    margin:15px auto;
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+    background:linear-gradient(#3b82f6,#2563eb);
+    border-radius:20px;
+    box-shadow:
+        0 0 35px rgba(37,99,235,.5),
+        inset 0 3px 10px rgba(255,255,255,.2);
+}
+
+.cell{
+    width:58px;
+    height:58px;
+    background:white;
+    border-radius:50%;
+    cursor:pointer;
+    transition:.3s;
+    border:4px solid rgba(0,0,0,.15);
+}
+
+.cell:hover{
+
+transform:translateY(-5px) scale(1.08);
+
+box-shadow:0 0 18px white;
+
+}
+
+.red{
+    background: radial-gradient(circle at 30% 30%, #ff7b7b, #ef4444 60%, #b91c1c);
+    box-shadow:
+        inset 0 3px 8px rgba(255,255,255,.5),
+        0 3px 10px rgba(0,0,0,.4);
+}
+
+.yellow{
+    background: radial-gradient(circle at 30% 30%, #fff59d, #facc15 60%, #ca8a04);
+    box-shadow:
+        inset 0 3px 8px rgba(255,255,255,.5),
+        0 3px 10px rgba(0,0,0,.4);
+}
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+button{
+
+padding:12px 22px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:600;
+
+transition:.3s;
+
+box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+}
+
+button:hover{
+
+transform:translateY(-3px) scale(1.05);
+
+}
+button:hover{
+    transform:translateY(-4px);
+}
+
+#restartBtn{
+    background:#2563eb;
+    color:white;
+}
+
+#newGameBtn{
+    background:#22c55e;
+    color:white;
+}
+
+#themeBtn{
+    background:#111827;
+    color:white;
+}
+
+#message{
+    color:#FFD700;
+    margin-top:10px;
+    font-size:20px;
+}
+
+.cell.red,
+.cell.yellow{
+    animation:drop .3s ease;
+}
+
+@keyframes drop{
+    from{
+        transform:translateY(-40px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.light-theme{
+    background:#f3f4f6;
+}
+
+.light-theme .container{
+    background:white;
+}
+
+.light-theme h1,
+.light-theme .turn,
+.light-theme .player-card h2{
+    color:#111827;
+}
+
+@media(max-width:768px){
+
+.cell{
+width:45px;
+height:45px;
+}
+
+.scoreboard{
+flex-direction:column;
+}
+
+h1{
+font-size:2rem;
+margin-bottom:12px;
+}
+
+}
+.win{
+
+animation:winner .7s infinite alternate;
+
+}
+
+@keyframes winner{
+
+from{
+
+transform:scale(1);
+
+}
+
+to{
+
+transform:scale(1.15);
+
+box-shadow:0 0 25px #22c55e;
+
+}
+
+}
+
+.popup{
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+display:none;
+
+z-index:999;
+
+text-align:center;
+
+box-shadow:0 0 30px rgba(0,0,0,.35);
+
+}
+
+.popup button{
+
+margin-top:15px;
+
+background:#2563eb;
+
+color:white;
+
+}
+
+.win{
+    animation:winnerGlow .8s infinite alternate;
+    box-shadow:0 0 20px #22c55e;
+    border:3px solid #fff;
+}
+
+@keyframes winnerGlow{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.1);
+box-shadow:0 0 30px #22c55e;
+}
+
+}
